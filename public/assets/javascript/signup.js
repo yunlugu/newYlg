@@ -25,7 +25,7 @@ var signupApp = new Vue({
             });
         },
         fetchGroups: function () {
-            this.$http.get(Attendize.fetchGroupsRoute + '/' + this.selected_department).then(function (res) {
+            this.$http.get(newYlg.fetchGroupsRoute + '/' + this.selected_department).then(function (res) {
                 this.groups = res.data;
             }, function () {
                 console.log('Failed to fetch groups')

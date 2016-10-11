@@ -2,9 +2,9 @@ var editApp = new Vue({
     el: '#app',
     data: {
         departments: '',
-        selected_department: Attendize.currentDepartment,
+        selected_department: newYlg.currentDepartment,
         groups: '',
-        selected_group: Attendize.currentGroup
+        selected_group: newYlg.currentGroup
 
     },
 
@@ -20,7 +20,7 @@ var editApp = new Vue({
 
     methods: {
         fetchDepartments: function () {
-            this.$http.get(Attendize.fetchDepartmentsRoute).then(function (res) {
+            this.$http.get(newYlg.fetchDepartmentsRoute).then(function (res) {
                 this.departments = res.data;
                 console.log(res);
             }, function () {
@@ -29,7 +29,7 @@ var editApp = new Vue({
         },
         fetchGroups: function () {
             console.log('hahah');
-            this.$http.get(Attendize.fetchGroupsRoute + '/' + this.selected_department).then(function (res) {
+            this.$http.get(newYlg.fetchGroupsRoute + '/' + this.selected_department).then(function (res) {
                 this.groups = res.data;
                 jQuery.each(this.groups, function(value) {
                     console.log(value);

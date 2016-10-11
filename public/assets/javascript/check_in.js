@@ -29,7 +29,7 @@ var checkinApp = new Vue({
 
     methods: {
         fetchAttendees: function () {
-            this.$http.post(Attendize.checkInSearchRoute, {q: this.searchTerm}).then(function (res) {
+            this.$http.post(newYlg.checkInSearchRoute, {q: this.searchTerm}).then(function (res) {
                 this.attendees = res.data;
                 this.searchResultsCount = (Object.keys(res.data).length);
             }, function () {
@@ -50,7 +50,7 @@ var checkinApp = new Vue({
                 attendee_id: attendee.id,
             };
 
-            this.$http.post(Attendize.checkInRoute, checkinData).then(function (res) {
+            this.$http.post(newYlg.checkInRoute, checkinData).then(function (res) {
                 if (res.data.status == 'success' || res.data.status == 'error') {
                     if (res.data.status == 'error') {
                         alert(res.data.message);
@@ -75,7 +75,7 @@ var checkinApp = new Vue({
 
             this.isScanning = false;
 
-            this.$http.post(Attendize.qrcodeCheckInRoute, {attendee_reference: attendeeReferenceCode}).then(function (res) {
+            this.$http.post(newYlg.qrcodeCheckInRoute, {attendee_reference: attendeeReferenceCode}).then(function (res) {
                 this.successBeep.play();
                 this.scanResult = true;
                 this.scanResultMessage = res.data.message;
@@ -167,7 +167,7 @@ var checkinApp = new Vue({
             this.fetchAttendees();
         },
         fetchDepartments: function () {
-            this.$http.post(Attendize.checkInSearchRoute, {q: this.searchTerm}).then(function (res) {
+            this.$http.post(newYlg.checkInSearchRoute, {q: this.searchTerm}).then(function (res) {
                 this.attendees = res.data;
                 this.searchResultsCount = (Object.keys(res.data).length);
             }, function () {
