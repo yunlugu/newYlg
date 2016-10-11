@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'organiser_events' => 'Organiser Events',
+    'events' => '培训',
+    'organiser_settings' => '管理员设置',
+    'organiser_page_design' => '主页设置',
+    'enable_public_organiser_page' => '公共主页开关',
+    'make_organiser_page_visible' => '开放公共主页',
+    'hide_organiser_page' => '隐藏公共主页',
+    'organiser_pages_cotain_events_list' => '公共主页包含培训列表。',
+    'organiser_name' => '组织名称',
+    'organiser_email' => '邮件',
+    'organiser_description' => '简介',
+    'organiser_analytics_code' => 'Analytics Code',
+    'current_logo' => '当前Logo',
+    'delete_logo' => '删除Logo?',
+    'organiser_logo' => 'Logo',
+    'recommend_square_image' => '建议使用正方形图片，在门票和培训列表页上会有更好的效果',
+    'save_organiser' => '保存',
+    'organiser_design' => '主页设计',
+    'header_background_color' => '头部背景颜色',
+    'text_color' => '文本颜色',
+    'background_color' => '背景颜色',
+    'organiser_page_preview' => '主页预览',
+    'save_changes' => '保存更改',
+];
