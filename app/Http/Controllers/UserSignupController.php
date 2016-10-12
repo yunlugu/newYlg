@@ -112,7 +112,7 @@ class UserSignupController extends Controller
         }
 
         $member->is_confirmed = 1;
-        $member->confirmation_code = null;
+        // $member->confirmation_code = null;
         $member->save();
 
         session()->flash('message', '邮箱验证成功～');
