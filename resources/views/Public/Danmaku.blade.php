@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="发射弹幕">
+                                <input name="info" type="text" class="form-control" placeholder="发射弹幕">
                                 <span class="input-group-btn">
                                     <button  class="btn btn-success"> 发射！</button>
                                 </span>
