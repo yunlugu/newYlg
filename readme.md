@@ -15,17 +15,23 @@ composer install
 php artisan ylg:install
 ```
 
+弹幕使用node做后端，需单独启动,默认监听8002端口
+```
+cd chat
+node danmaku.js
+```
 
 ## Woking on
 
 - 多语言支持
-- 管理参与人员信息
 - 报名
-- 签到
-- 员工信息管理
 - 角色分配
-- 注册
+- 授权
 
 ## 功能
 
-- 培训管理，添加修改培训信息
+- 培训管理
+- 与会管理
+- 扫码签到
+- 员工信息管理
+- 弹幕
