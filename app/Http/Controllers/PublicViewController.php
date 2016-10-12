@@ -31,6 +31,7 @@ class PublicViewController extends Controller
     public function showDanmakuPage(Request $request) {
         JavaScript::put([
             'logo_path' => url('assets/images/logo2.png'),
+            'node_host' => env('NODE_HOST'),
         ]);
         return view('Public.Danmaku');
     }

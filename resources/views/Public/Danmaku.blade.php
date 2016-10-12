@@ -114,7 +114,7 @@
         $(".pick-a-color").pickAColor();
 
         var  default_item={
-                'img':Attendize.logo_path,
+                'img':newYlg.logo_path,
                 'info':'云麓蛋！！！！！',
                 'href':'http://www.yunlugu.org',
                 'close':false,
@@ -154,7 +154,7 @@
     <script src="{{url('plugins/socket.io/node_modules/socket.io-client/socket.io.js')}}"></script>
     <!-- <script src="http://code.jquery.com/jquery-1.11.1.js"></script> -->
     <script>
-    var socket = io('http://localhost:3000');
+    var socket = io(newYlg.node_host);
 
     $('form').submit(function(){
         console.log($(this).serializeJSON())
