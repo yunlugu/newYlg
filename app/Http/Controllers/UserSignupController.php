@@ -117,7 +117,7 @@ class UserSignupController extends Controller
 
         session()->flash('message', '邮箱验证成功～');
 
-        return redirect()->route('danmaku');
+        return redirect()->route('showDanmakuPage');
     }
 
     public function test(){
