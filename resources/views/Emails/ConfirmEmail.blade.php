@@ -8,9 +8,6 @@
 <td>
   <p>Hi {{$full_name}}</p>
   <p>感谢注册云麓谷！请点击下方按钮进行验证！</p>
-  <p>
-      如按钮异常请点此<a href="{{route('confirmEmail', ['confirmation_code' => $confirmation_code])}}" target="_blank">{{route('confirmEmail', ['confirmation_code' => $confirmation_code])}}</a>进行验证
-  </p>
   <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
     <tbody>
       <tr>
