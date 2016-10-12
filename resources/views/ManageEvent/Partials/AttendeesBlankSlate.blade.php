@@ -6,18 +6,15 @@
 @stop
 
 @section('blankslate-title')
-    No Attendees Yet
+    No Members Yet
 @stop
 
 @section('blankslate-text')
-    Attendees will appear here once they successfully registered for your event, or, you can manually invite attendees yourself.
+    成员注册后会显示在这里，目前没有成员
 @stop
 
 @section('blankslate-body')
-<button data-invoke="modal" data-modal-id='InviteAttendee' data-href="{{route('showInviteAttendee', array('event_id'=>$event->id))}}" href='javascript:void(0);'  class=' btn btn-success mt5 btn-lg' type="button" >
-    <i class="ico-user-plus"></i>
-    Invite Attendee
+<button data-modal-id="InviteAttendee" href="javascript:void(0);"  data-href="{{route('showAddMember', ['organiser_id'=>$organiser->id])}}" class="loadModal btn btn-success" type="button"><i class="ico-user-plus"></i>
+    添加成员
 </button>
 @stop
-
-
