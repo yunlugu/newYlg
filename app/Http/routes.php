@@ -266,6 +266,15 @@ Route::group(['middleware' => ['auth', 'first.run']], function () {
             'uses' => 'OrganiserMembersController@showMembers',
         ]);
 
+        Route::get('{organiser_id}/members/single_message', [
+            'as'   => 'showMessageMember',
+            'uses' => 'OrganiserMembersController@showMessageMember',
+        ]);
+        Route::post('{organiser_id}/members/single_message', [
+            'as'   => 'postMessageMember',
+            'uses' => 'OrganiserMembersController@postMessageMember',
+        ]);
+
 
         Route::get('{organiser_id}/customize', [
             'as'   => 'showOrganiserCustomize',

@@ -51,7 +51,7 @@
             </ul>
         </div>
         <div class="btn-group btn-group-responsive">
-            <button data-modal-id="MessageAttendees" href="javascript:void(0);" data-href="#" class="loadModal btn btn-success" type="button"><i class="ico-envelope"></i> 发邮件</button>
+            <button data-modal-id="MessageAttendees" href="javascript:void(0);" data-href="" class="loadModal btn btn-success" type="button"><i class="ico-envelope"></i> 发邮件</button>
         </div>
     </div>
 </div>
@@ -116,7 +116,7 @@
                                         <li><a
                                             data-modal-id="MessageAttendee"
                                             href="javascript:void(0);"
-                                            data-href=""
+                                            data-href="{{route('showMessageMember', ['member_id'=>$member->id])}}"
                                             class="loadModal"
                                             > 发送邮件</a></li>
                                         @endif

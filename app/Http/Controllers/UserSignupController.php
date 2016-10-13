@@ -56,8 +56,8 @@ class UserSignupController extends Controller
         $is_attendize = Utils::isAttendize();
 
         $this->validate($request, [
-            'email'        => 'required|email|unique:members',
-            'phone'        => 'required|unique:members',
+            'email'        => 'required|email|unique:members,email,NULL,id,deleted_at,NULL',
+            'phone'        => 'required|unique:members,phone,NULL,id,deleted_at,NULL',
             'password'     => 'required|min:5|confirmed',
             'full_name'   => 'required',
             // 'terms_agreed' => $is_attendize ? 'required' : '',

@@ -118,7 +118,7 @@ class OrganiserMembersController extends MyBaseController
         $rules = [
             'full_name'   => 'required',
             'password'    => 'required|min:6',
-            'email'        => 'required|email|unique:members',
+            'email'        => 'required|email|unique:members,email,deleted_at',
         ];
 
         $messages = [
@@ -352,16 +352,16 @@ class OrganiserMembersController extends MyBaseController
      * @param $attendee_id
      * @return View
      */
-    public function showMessageAttendee(Request $request, $attendee_id)
+    public function showMessageMember(Request $request, $member_id)
     {
-        $attendee = Attendee::scope()->findOrFail($attendee_id);
+        $member = Member::scope()->findOrFail($member_id);
 
         $data = [
-            'attendee' => $attendee,
-            'event'    => $attendee->event,
+            'member' => $member,
+            // 'event'    => $member->event,
         ];
 
-        return view('ManageEvent.Modals.MessageAttendee', $data);
+        return view('ManageEvent.Modals.MessageMember', $data);
     }
 
     /**
@@ -371,7 +371,7 @@ class OrganiserMembersController extends MyBaseController
      * @param $attendee_id
      * @return mixed
      */
-    public function postMessageAttendee(Request $request, $attendee_id)
+    public function postMessageMember(Request $request, $member_id)
     {
         $rules = [
             'subject' => 'required',
@@ -387,33 +387,33 @@ class OrganiserMembersController extends MyBaseController
             ]);
         }
 
-        $attendee = Attendee::scope()->findOrFail($attendee_id);
+        $member = Member::scope()->findOrFail($member_id);
 
         $data = [
-            'attendee'        => $attendee,
+            'member'        => $member,
             'message_content' => $request->get('message'),
             'subject'         => $request->get('subject'),
-            'event'           => $attendee->event,
-            'email_logo'      => $attendee->event->organiser->full_logo_path,
+            // 'event'           => $member->event,
+            'email_logo'      => $member->organiser->full_logo_path,
         ];
 
         //@todo move this to the SendAttendeeMessage Job
-        Mail::send('Emails.messageAttendees', $data, function ($message) use ($attendee, $data) {
-            $message->to($attendee->email, $attendee->full_name)
-                ->from(config('attendize.outgoing_email_noreply'), $attendee->event->organiser->name)
-                ->replyTo($attendee->event->organiser->email, $attendee->event->organiser->name)
+        Mail::send('Emails.messageAttendees', $data, function ($message) use ($member, $data) {
+            $message->to($member->email, $member->full_name)
+                ->from(config('attendize.outgoing_email_noreply'), $member->organiser->name)
+                ->replyTo($member->organiser->email, $member->organiser->name)
                 ->subject($data['subject']);
         });
 
-        /* Could bcc in the above? */
-        if ($request->get('send_copy') == '1') {
-            Mail::send('Emails.messageAttendees', $data, function ($message) use ($attendee, $data) {
-                $message->to($attendee->event->organiser->email, $attendee->event->organiser->name)
-                    ->from(config('attendize.outgoing_email_noreply'), $attendee->event->organiser->name)
-                    ->replyTo($attendee->event->organiser->email, $attendee->event->organiser->name)
-                    ->subject($data['subject'] . '[ORGANISER COPY]');
-            });
-        }
+        /* 给部门管理员发通知 */
+        // if ($request->get('send_copy') == '1') {
+        //     Mail::send('Emails.messageAttendees', $data, function ($message) use ($member, $data) {
+        //         $message->to($member->organiser->email, $member->organiser->name)
+        //             ->from(config('attendize.outgoing_email_noreply'), $member->organiser->name)
+        //             ->replyTo($member->organiser->email, $member->organiser->name)
+        //             ->subject($data['subject'] . '[ORGANISER COPY]');
+        //     });
+        // }
 
         return response()->json([
             'status'  => 'success',
