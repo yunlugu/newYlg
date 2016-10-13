@@ -33,14 +33,14 @@
                         <div class="form-group">
                             <div class="custom-checkbox">
                                 <input type="checkbox" name="send_copy" id="send_copy" value="1">
-                                <label for="send_copy">&nbsp;&nbsp;给该部门管理员 <b>{{$member->event->organiser->email}}</b>发送副本</label>
+                                <label for="send_copy">&nbsp;&nbsp;给该部门管理员 <b>{{$member->organiser->email}}</b>发送副本</label>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="help-block">
-                    The member will be instructed to send any reply to <b>{{$member->event->organiser->email}}</b>
+                    该员工会被提示回复邮件至 <b>{{$member->organiser->email}}</b>
                 </div>
             </div> <!-- /end modal body-->
             <div class="modal-footer">

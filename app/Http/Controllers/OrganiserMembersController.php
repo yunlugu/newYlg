@@ -354,14 +354,14 @@ class OrganiserMembersController extends MyBaseController
      */
     public function showMessageMember(Request $request, $member_id)
     {
-        $member = Member::scope()->findOrFail($member_id);
+        $member = Member::findOrFail($member_id);
 
         $data = [
             'member' => $member,
             // 'event'    => $member->event,
         ];
 
-        return view('ManageEvent.Modals.MessageMember', $data);
+        return view('ManageOrganiser.Modals.MessageMember', $data);
     }
 
     /**
@@ -387,7 +387,7 @@ class OrganiserMembersController extends MyBaseController
             ]);
         }
 
-        $member = Member::scope()->findOrFail($member_id);
+        $member = Member::findOrFail($member_id);
 
         $data = [
             'member'        => $member,
@@ -398,7 +398,7 @@ class OrganiserMembersController extends MyBaseController
         ];
 
         //@todo move this to the SendAttendeeMessage Job
-        Mail::send('Emails.messageAttendees', $data, function ($message) use ($member, $data) {
+        Mail::send('Emails.MessageMember', $data, function ($message) use ($member, $data) {
             $message->to($member->email, $member->full_name)
                 ->from(config('attendize.outgoing_email_noreply'), $member->organiser->name)
                 ->replyTo($member->organiser->email, $member->organiser->name)
@@ -417,7 +417,7 @@ class OrganiserMembersController extends MyBaseController
 
         return response()->json([
             'status'  => 'success',
-            'message' => 'Message Successfully Sent',
+            'message' => '邮件已发送',
         ]);
     }
 
