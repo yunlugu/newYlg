@@ -1,7 +1,7 @@
 @extends('Emails.Layouts.Master')
 
 @section('preheader')
-欢迎注册云麓谷！请打开邮件确认（使用微信查看邮件可能产生错乱）
+Hi {{$member->full_name}}！您有来自云麓谷的通知哦（使用微信查看邮件可能产生错乱）
 @stop
 
 @section('message_content')
