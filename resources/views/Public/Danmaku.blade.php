@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="input-group">
-                                <input name="info" type="text" class="form-control" placeholder="发射弹幕">
+                                <input id="info" name="info" type="text" class="form-control" placeholder="发射弹幕">
                                 <span class="input-group-btn">
                                     <button  class="btn btn-success"> 发射！</button>
                                 </span>
@@ -157,10 +157,16 @@
     var socket = io(newYlg.node_host);
 
     $('form').submit(function(){
-        console.log($(this).serializeJSON())
-    socket.emit('chat message', $(this).serializeJSON());
-    // $('#m').val('');
-    return false;
+        // console.log($(this).serializeJSON())
+        if($('#info').val() == '')
+            return false;
+        var rex = /(<([^>]+)>)/ig; 
+        $('#info').val($('#info').val().replace(rex , ""));
+        console.log($('#info').val().replace(rex , ""));
+        // alert(txt.replace(rex , ""));
+        socket.emit('chat message', $(this).serializeJSON());
+        $('#info').val('');
+        return false;
     });
 
     socket.on('chat message', function(danmaku) {
