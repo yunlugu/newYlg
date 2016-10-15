@@ -67,7 +67,6 @@
 </div>
 @stop
 
-
 @section('content')
 
 <!--Start Attendees table-->
@@ -119,13 +118,13 @@
                                             data-href="{{route('showMessageMember', ['member_id'=>$member->id])}}"
                                             class="loadModal"
                                             > 发送邮件</a></li>
-                                        @endif
                                         <li><a
                                             data-modal-id="ResendTicketToAttendee"
                                             href="javascript:void(0);"
-                                            data-href=""
+                                            data-href="{{route('postQrcode', ['member_id'=>$member->id])}}"
                                             class="loadModal"
-                                            > Resend Ticket</a></li>
+                                            > 重发二维码</a></li>
+                                        @endif
                                         <li><a
                                             href="#"
                                             >Download PDF Ticket</a></li>
@@ -157,7 +156,7 @@
         @if(!empty($q))
         @include('Shared.Partials.NoSearchResults')
         @else
-        @include('ManageEvent.Partials.AttendeesBlankSlate')
+        @include('ManageOrganiser.Partials.MembersBlankSlate')
         @endif
 
         @endif

@@ -421,6 +421,17 @@ class OrganiserMembersController extends MyBaseController
         ]);
     }
 
+    public function postQrcode(Request $request, $member_id) {
+        $member = Member::findOrFail($member_id);
+        Mail::send('Emails.SendQrcode', ['api_token' => $member->api_token, 'full_name' => $member->full_name, 'email_logo' => $member->organiser->logo_path], function ($message) use ($member) {
+            $message->to($member->email, $member->full_name)
+                ->from(config('attendize.outgoing_email_noreply'), $member->organiser->name)
+                ->replyTo($member->organiser->email, $member->organiser->name)
+                ->subject('来自云麓谷的通知～');
+        });
+
+    }
+
     /**
      * Shows the 'Message Attendees' modal
      *

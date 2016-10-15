@@ -270,6 +270,10 @@ Route::group(['middleware' => ['auth', 'first.run']], function () {
             'as'   => 'showMessageMember',
             'uses' => 'OrganiserMembersController@showMessageMember',
         ]);
+        Route::get('{organiser_id}/members/qrcode_message', [
+            'as'   => 'postQrcode',
+            'uses' => 'OrganiserMembersController@postQrcode',
+        ]);
         Route::post('{organiser_id}/members/single_message', [
             'as'   => 'postMessageMember',
             'uses' => 'OrganiserMembersController@postMessageMember',
