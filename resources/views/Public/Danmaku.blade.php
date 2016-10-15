@@ -83,7 +83,7 @@
 
 @section('script')
     <script type="text/javascript" src="{{url('plugins/danmaku/static/js/tinycolor-0.9.15.min.js')}}"></script>
-    <script type="text/javascript" src="{{url('plugins/danmaku/dist/js/jquery.barrager.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('plugins/danmaku/dist/js/jquery.barrager.js')}}"></script>
     <script type="text/javascript" src="{{url('plugins/danmaku/static/syntaxhighlighter/scripts/shCore.js')}}"></script>
     <script type="text/javascript" src="{{url('plugins/danmaku/static/syntaxhighlighter/scripts/shBrushJScript.js')}}"></script>
     <script type="text/javascript" src="{{url('plugins/danmaku/static/syntaxhighlighter/scripts/shBrushPhp.js')}}"></script>
@@ -157,13 +157,10 @@
     var socket = io(newYlg.node_host);
 
     $('form').submit(function(){
-        // console.log($(this).serializeJSON())
         if($('#info').val() == '')
             return false;
-        var rex = /(<([^>]+)>)/ig; 
+        var rex = /(<([^>]+)>)/ig;
         $('#info').val($('#info').val().replace(rex , ""));
-        console.log($('#info').val().replace(rex , ""));
-        // alert(txt.replace(rex , ""));
         socket.emit('chat message', $(this).serializeJSON());
         $('#info').val('');
         return false;
@@ -173,7 +170,7 @@
         var item={
                img:false, //图片
                info:danmaku.info, //文字
-               // href:'http://www.yaseng.org', //链接
+               // href:'http://www.yunlugu.org', //链接
                close:false, //显示关闭按钮
                speed:danmaku.speed, //延迟,单位秒,默认6
                bottom:danmaku.bottomradio, //距离底部高度,单位px,默认随机

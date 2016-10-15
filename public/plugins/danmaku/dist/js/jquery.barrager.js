@@ -15,6 +15,7 @@
 			old_ie_color : '#000000'
 		}, barrage || {});
 
+		barrage.color = '#' + barrage.color;
 		var time = new Date().getTime();
 		var barrager_id = 'barrage_' + time;
 		var id = '#' + barrager_id;
@@ -49,6 +50,7 @@
 		}else{
 
 			content.css('color', barrage.color);
+			console.log(barrage.color);
 
 		}
 
