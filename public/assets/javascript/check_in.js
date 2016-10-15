@@ -13,7 +13,7 @@ var checkinApp = new Vue({
         scannerDataUrl: '',
         QrTimeout: null,
         canvasContext: $('canvas#QrCanvas')[0].getContext('2d'),
-        successBeep: new Audio('/mp3/beep.mp3'),
+        successBeep: new Audio(newYlg.BeepMp3Path),
         scanResult: false,
         scanResultMessage: '',
         scanResultType: null

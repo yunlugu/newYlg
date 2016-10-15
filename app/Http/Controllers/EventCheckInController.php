@@ -32,6 +32,7 @@ class EventCheckInController extends MyBaseController
             'qrcodeCheckInRoute' => route('postQRCodeCheckInAttendee', ['event_id' => $event->id]),
             'checkInRoute'       => route('postCheckInAttendee', ['event_id' => $event->id]),
             'checkInSearchRoute' => route('postCheckInSearch', ['event_id' => $event->id]),
+            'BeepMp3Path' => url('mp3/beep.mp3'),
         ]);
 
         return view('ManageEvent.CheckIn', $data);

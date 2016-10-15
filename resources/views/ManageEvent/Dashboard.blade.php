@@ -2,7 +2,7 @@
 
 @section('title')
     @parent
-    Dashboard
+    控制面板
 @stop
 
 
@@ -10,7 +10,7 @@
     @include('ManageEvent.Partials.TopNav')
 @stop
 
-@section('page_title', '<i class="ico-home2"></i>&nbsp;Event Dashboard')
+@section('page_title', '<i class="ico-home2"></i>&nbsp;控制面板')
 
 @section('menu')
     @include('ManageEvent.Partials.Sidebar')
@@ -37,28 +37,28 @@
 
 @section('content')
     <div class="row">
-        <div class="col-sm-3">
+        <!-- <div class="col-sm-3">
             <div class="stat-box">
                 <h3>{{ money($event->sales_volume + $event->organiser_fees_volume, $event->currency) }}</h3>
                 <span>Sales Volume</span>
             </div>
-        </div>
-        <div class="col-sm-3">
+        </div> -->
+        <div class="col-sm-4">
             <div class="stat-box">
-                <h3>{{ $event->orders->count() }}</h3>
-                <span>Orders</span>
+                <h3>{{ $event->attendees->count() }}</h3>
+                <span>报名</span>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="stat-box">
-                <h3>{{ $event->tickets->sum('quantity_sold') }}</h3>
-                <span>Tickets Sold</span>
+                <h3>{{ $event->attendees->count() }}</h3>
+                <span>签到</span>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="stat-box">
                 <h3>{{ $event->stats->sum('views') }}</h3>
-                <span>Event Views</span>
+                <span>总浏览量</span>
             </div>
         </div>
 
@@ -75,31 +75,14 @@
     <div class="row">
         <div class="col-md-9 col-sm-6">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="panel">
-                        <div class="panel-heading panel-default">
-                            <h3 class="panel-title">
-                                Tickets Sold
-                        <span style="color: green; float: right;">
-                            {{$event->tickets->sum('quantity_sold')}} Total
-                        </span>
-                            </h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="chart-wrap">
-                                <div style="height:200px;" class="statChart" id="theChart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-md-6">
                     <div class="panel">
                         <div class="panel-heading panel-default">
                             <h3 class="panel-title">
                                 Ticket Sales Volume
                                 <span style="color: green; float: right;">
-                                    {{money($event->sales_volume + $event->organiser_fees_volume, $event->currency)}}
-                                    Total
+                                    {{$event->attendees->count()}} Total
                                 </span>
                             </h3>
                         </div>
@@ -136,7 +119,7 @@
                     <div class="panel">
                         <div class="panel-heading panel-default">
                             <h3 class="panel-title">
-                                Registrations By Ticket
+                                还没想好是啥{{$event->stats->sum('views')}} Total
                             </h3>
                         </div>
                         <div class="panel-body">
