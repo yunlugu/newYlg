@@ -393,7 +393,6 @@ class OrganiserMembersController extends MyBaseController
             'member'        => $member,
             'message_content' => $request->get('message'),
             'subject'         => $request->get('subject'),
-            // 'event'           => $member->event,
             'email_logo'      => $member->organiser->full_logo_path,
         ];
 
@@ -421,14 +420,53 @@ class OrganiserMembersController extends MyBaseController
         ]);
     }
 
-    public function postQrcode(Request $request, $member_id) {
+    public function showMessageQrcode(Request $request, $member_id)
+    {
         $member = Member::findOrFail($member_id);
-        Mail::send('Emails.SendQrcode', ['api_token' => $member->api_token, 'full_name' => $member->full_name, 'email_logo' => $member->organiser->logo_path], function ($message) use ($member) {
+
+        $data = [
+            'member' => $member,
+            // 'event'    => $member->event,
+        ];
+
+        return view('ManageOrganiser.Modals.MessageQrcode', $data);
+    }
+
+    public function postQrcode(Request $request, $member_id) {
+        $rules = [
+            'subject' => 'required',
+            // 'message' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status'   => 'error',
+                'messages' => $validator->messages()->toArray(),
+            ]);
+        }
+
+        $member = Member::findOrFail($member_id);
+
+        $data = [
+            'full_name' => $member->full_name,
+            'api_token' => $member->api_token,
+            'message_content' => $request->get('message'),
+            'subject'         => $request->get('subject'),
+            'email_logo'      => $member->organiser->full_logo_path,
+        ];
+        $member = Member::findOrFail($member_id);
+        Mail::send('Emails.SendQrcode', $data, function ($message) use ($member, $data) {
             $message->to($member->email, $member->full_name)
                 ->from(config('attendize.outgoing_email_noreply'), $member->organiser->name)
                 ->replyTo($member->organiser->email, $member->organiser->name)
-                ->subject('来自云麓谷的通知～');
+                ->subject($data['subject']);
         });
+        return response()->json([
+            'status'  => 'success',
+            'message' => '邮件已发送',
+        ]);
 
     }
 

@@ -13,6 +13,13 @@
   <div class="barcode">
       {!! DNS2D::getBarcodeSVG($api_token, "QRCODE") !!}
   </div>
+
+  @if ($message_content != '')
+  <p>
+      {{nl2br($message_content)}}
+  </p>
+  @endif
+  
   <p>
       如果您有任何问题或者建议请回复此邮件！谢谢您的支持！
   </p>
