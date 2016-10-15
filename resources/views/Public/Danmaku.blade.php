@@ -115,7 +115,7 @@
 
         var  default_item={
                 'img':newYlg.logo_path,
-                'info':'云麓蛋！！！！！',
+                'info':'云麓蛋！！',
                 'href':'http://www.yunlugu.org',
                 'close':false,
                 'speed':10,

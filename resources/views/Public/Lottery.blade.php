@@ -25,7 +25,7 @@
 @section('content')
 <div id="container">
   <div id="main">
-        <img width="80%" class="wow pulse" data-wow-iteration="infinite" data-wow-duration="1500ms" src="{{url('img/lulu.png')}}" alt="" />
+        <img width="80%" class="wow pulse" data-wow-iteration="infinite" data-wow-duration="1500ms" src="{{url('img/logo.jpg')}}" alt="" />
     <br>
     <br>
     <br>
@@ -74,7 +74,7 @@
 
         var  default_item={
                 'img':newYlg.logo_path,
-                'info':'云麓蛋！！！！！',
+                'info':'云麓蛋！！',
                 'href':'http://www.yunlugu.org',
                 'close':false,
                 'speed':10,
