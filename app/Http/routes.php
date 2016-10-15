@@ -774,6 +774,11 @@ Route::post('danmaku', [
     'uses' => 'PublicViewController@postDanmaku',
 ]);
 
+Route::get('lottery', [
+    'as'   => 'showLotteryPage',
+    'uses' => 'PublicViewController@showLotteryPage',
+]);
+
 Route::get('/terms_and_conditions', [
     'as' => 'termsAndConditions',
     function () {

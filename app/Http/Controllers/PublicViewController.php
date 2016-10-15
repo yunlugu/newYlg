@@ -6,6 +6,7 @@ use App\Attendize\Utils;
 use App\Models\Affiliate;
 use App\Models\Event;
 use App\Models\EventStats;
+use App\Models\Attendee;
 use Auth;
 use Cookie;
 use Illuminate\Http\Request;
@@ -34,6 +35,15 @@ class PublicViewController extends Controller
             'node_host' => env('NODE_HOST'),
         ]);
         return view('Public.Danmaku');
+    }
+
+    public function showLotteryPage(Request $request) {
+        JavaScript::put([
+            'logo_path' => url('assets/images/logo2.png'),
+            'node_host' => env('NODE_HOST'),
+            'attendees' => Attendee::get()->toJson(),
+        ]);
+        return view('Public.Lottery');
     }
 
     public function postDanmaku(Request $request) {
