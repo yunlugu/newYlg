@@ -50,7 +50,7 @@ class EventController extends MyBaseController
 
         $event->title = $request->get('title');
         $event->speaker = $request->get('speaker');
-        $event->department = $request->get('department');
+        $event->department_id = $request->get('department');
         $event->tags = $request->get('tags');
         $event->description = strip_tags($request->get('description'));
         $event->start_date = $request->get('start_date') ? Carbon::createFromFormat('d-m-Y H:i',
@@ -80,9 +80,9 @@ class EventController extends MyBaseController
         } else { /* Manually entered */
             $event->venue_name = $request->get('location_venue_name');
             $event->location_address_line_1 = $request->get('location_address_line_1');
-            $event->location_address_line_2 = $request->get('location_address_line_2');
-            $event->location_state = $request->get('location_state');
-            $event->location_post_code = $request->get('location_post_code');
+            // $event->location_address_line_2 = $request->get('location_address_line_2');
+            // $event->location_state = $request->get('location_state');
+            // $event->location_post_code = $request->get('location_post_code');
             $event->location_is_manual = 1;
         }
 
