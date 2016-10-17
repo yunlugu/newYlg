@@ -563,47 +563,38 @@ class OrganiserMembersController extends MyBaseController
     public function showExportMembers($organiser_id, $export_as = 'xls')
     {
 
-        Excel::create('members-as-of-' . date('d-m-Y-g.i.a'), function ($excel) use ($organiser_id) {
+        Excel::create('云麓谷员工信息列表', function ($excel) use ($organiser_id) {
 
             //下面的还没有开始改
 
-            $excel->setTitle('Attendees List');
+            $excel->setTitle('员工列表');
 
             // Chain the setters
             $excel->setCreator(config('attendize.app_name'))
                 ->setCompany(config('attendize.app_name'));
 
-            $excel->sheet('attendees_sheet_1', function ($sheet) use ($event_id) {
+            $excel->sheet('members_sheet_1', function ($sheet) use ($organiser_id) {
 
                 DB::connection()->setFetchMode(\PDO::FETCH_ASSOC);
-                $data = DB::table('attendees')
-                    ->where('attendees.event_id', '=', $event_id)
-                    ->where('attendees.is_cancelled', '=', 0)
-                    ->where('attendees.account_id', '=', Auth::user()->account_id)
-                    ->join('events', 'events.id', '=', 'attendees.event_id')
-                    ->join('orders', 'orders.id', '=', 'attendees.order_id')
-                    ->join('tickets', 'tickets.id', '=', 'attendees.ticket_id')
+                $data = DB::table('members')
+                    ->where('members.organiser_id', '=', $organiser_id)
+                    ->join('departments', 'members.department_id', '=', 'departments.id')
+                    ->join('groups', 'members.group_id', '=', 'groups.id')
                     ->select([
-                        'attendees.first_name',
-                        'attendees.last_name',
-                        'attendees.email',
-                        'orders.order_reference',
-                        'tickets.title',
-                        'orders.created_at',
-                        DB::raw("(CASE WHEN attendees.has_arrived THEN 'YES' ELSE 'NO' END) AS has_arrived"),
-                        'attendees.arrival_time',
+                        'members.full_name',
+                        'members.email',
+                        'members.phone',
+                        'departments.department_name',
+                        'groups.group_name',
                     ])->get();
 
                 $sheet->fromArray($data);
                 $sheet->row(1, [
-                    'First Name',
-                    'Last Name',
+                    '姓名',
                     'Email',
-                    'Order Reference',
-                    'Ticket Type',
-                    'Purchase Date',
-                    'Has Arrived',
-                    'Arrival Time',
+                    '电话',
+                    '部门',
+                    '小组',
                 ]);
 
                 // Set gray background on first row

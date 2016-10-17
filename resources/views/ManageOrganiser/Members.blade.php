@@ -44,10 +44,10 @@
                 <i class="ico-users"></i> 导出 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Excel (XLSX)</a></li>
-                <li><a href="#">Excel (XLS)</a></li>
-                <li><a href="#">CSV</a></li>
-                <li><a href="#">HTML</a></li>
+                <li><a href="{{route('showExportMembers', ['organiser_id'=>$organiser->id,'export_as'=>'xlsx'])}}">Excel (XLSX)</a></li>
+                <li><a href="{{route('showExportMembers', ['organiser_id'=>$organiser->id,'export_as'=>'xls'])}}">Excel (XLS)</a></li>
+                <li><a href="{{route('showExportMembers', ['organiser_id'=>$organiser->id,'export_as'=>'csv'])}}">CSV</a></li>
+                <li><a href="{{route('showExportMembers', ['organiser_id'=>$organiser->id,'export_as'=>'html'])}}">HTML</a></li>
             </ul>
         </div>
         <div class="btn-group btn-group-responsive">
