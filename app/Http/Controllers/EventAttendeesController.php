@@ -538,10 +538,10 @@ class EventAttendeesController extends MyBaseController
      */
     public function showExportAttendees($event_id, $export_as = 'xls')
     {
+        $event = Event::findOrFail($event_id);
+        Excel::create($event->title . '-' . $event->start_date, function ($excel) use ($event_id) {
 
-        Excel::create('attendees-as-of-' . date('d-m-Y-g.i.a'), function ($excel) use ($event_id) {
-
-            $excel->setTitle('Attendees List');
+            $excel->setTitle('签到名单');
 
             // Chain the setters
             $excel->setCreator(config('attendize.app_name'))
@@ -553,31 +553,27 @@ class EventAttendeesController extends MyBaseController
                 $data = DB::table('attendees')
                     ->where('attendees.event_id', '=', $event_id)
                     ->where('attendees.is_cancelled', '=', 0)
-                    ->where('attendees.account_id', '=', Auth::user()->account_id)
+                    ->join('members', 'attendees.member_id', '=', 'members.id')
                     ->join('events', 'events.id', '=', 'attendees.event_id')
-                    ->join('orders', 'orders.id', '=', 'attendees.order_id')
-                    ->join('tickets', 'tickets.id', '=', 'attendees.ticket_id')
+                    ->join('departments', 'members.department_id', '=', 'departments.id')
+                    ->join('groups', 'members.group_id', '=', 'groups.id')
                     ->select([
-                        'attendees.first_name',
-                        'attendees.last_name',
+                        'attendees.full_name',
                         'attendees.email',
-                        'orders.order_reference',
-                        'tickets.title',
-                        'orders.created_at',
-                        DB::raw("(CASE WHEN attendees.has_arrived THEN 'YES' ELSE 'NO' END) AS has_arrived"),
-                        'attendees.arrival_time',
+                        'members.phone',
+                        'departments.department_name',
+                        'groups.group_name',
+                        'attendees.created_at',
                     ])->get();
 
                 $sheet->fromArray($data);
                 $sheet->row(1, [
-                    'First Name',
-                    'Last Name',
+                    '姓名',
                     'Email',
-                    'Order Reference',
-                    'Ticket Type',
-                    'Purchase Date',
-                    'Has Arrived',
-                    'Arrival Time',
+                    '电话',
+                    '部门',
+                    '小组',
+                    '签到时间',
                 ]);
 
                 // Set gray background on first row

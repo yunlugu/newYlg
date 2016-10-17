@@ -14,7 +14,7 @@
 @stop
 
 @section('blankslate-body')
-<button data-modal-id="InviteAttendee" href="javascript:void(0);"  data-href="{{route('showAddMember', ['organiser_id'=>$organiser->id])}}" class="loadModal btn btn-success" type="button"><i class="ico-user-plus"></i>
+<button data-modal-id="InviteAttendee" href="javascript:void(0);"  data-href="{{route('showInviteAttendee', ['event_id'=>$event->id])}}" class="loadModal btn btn-success" type="button"><i class="ico-user-plus"></i>
     添加成员
 </button>
 @stop

@@ -560,10 +560,12 @@ class OrganiserMembersController extends MyBaseController
      * @param $event_id
      * @param string $export_as (xlsx, xls, csv, html)
      */
-    public function showExportAttendees($event_id, $export_as = 'xls')
+    public function showExportMembers($organiser_id, $export_as = 'xls')
     {
 
-        Excel::create('attendees-as-of-' . date('d-m-Y-g.i.a'), function ($excel) use ($event_id) {
+        Excel::create('members-as-of-' . date('d-m-Y-g.i.a'), function ($excel) use ($organiser_id) {
+
+            //下面的还没有开始改
 
             $excel->setTitle('Attendees List');
 

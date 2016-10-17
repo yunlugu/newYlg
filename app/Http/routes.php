@@ -284,6 +284,11 @@ Route::group(['middleware' => ['auth', 'first.run']], function () {
             'uses' => 'OrganiserMembersController@postQrcode',
         ]);
 
+        Route::get('{organiser_id}/members/export/{export_as?}', [
+            'as'   => 'showExportMembers',
+            'uses' => 'OrganiserMembersController@showExportMembers',
+        ]);
+
         Route::get('{organiser_id}/customize', [
             'as'   => 'showOrganiserCustomize',
             'uses' => 'OrganiserCustomizeController@showCustomize',
