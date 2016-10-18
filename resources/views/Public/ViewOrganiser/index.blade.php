@@ -41,26 +41,26 @@
         <div class="site-menu with-background-image">
           <ul>
               <li>
-                <a href="/">
+                <a href="http://www.yunlugu.org/danmaku">
                   Home
                 </a>
               </li>
-              <li>
-                <a href="/archives">
+              <!-- <li>
+                <a href="#">
                   归档
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a href="https://github.com/yunlugu">
                   Github
                 </a>
               </li>
 
-              <li>
+              <!-- <li>
                 <a href="#">
                   加入我们
                 </a>
-              </li>
+              </li> -->
           </ul>
         </div>
       </div>
@@ -76,7 +76,7 @@
           <div class="col-lg-10 col-md-10 col-md-offset-1">
             @foreach($upcoming_events as $event)
               <div class="post-item-wrapper">
-                <a href="/2016/09/25/hello-world/" class="post-title">
+                <a href="{{url('e/' . $event->id)}}" class="post-title">
                     {{$event->title}}
                 </a>
                 <div class="post-excerpt">
