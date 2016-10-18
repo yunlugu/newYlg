@@ -87,7 +87,7 @@
                             <a href="#">{{$event->speaker}}</a>
                         </div>
                         <div class="categories">
-                            <a href="#">{{$event->department}}</a>
+                            <a href="#">{{$event->department->department_name}}</a>
                         </div>
                     </div>
                     <!-- Post Excerpt -->
