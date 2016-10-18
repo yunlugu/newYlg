@@ -49,7 +49,7 @@ class OrganiserViewController extends Controller
             'past_events'     => $past_events,
         ];
 
-        return view('Public.ViewOrganiser.OrganiserPage', $data);
+        return view('Public.ViewOrganiser.index', $data);
     }
 
     /**
