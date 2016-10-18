@@ -2,15 +2,14 @@
 <html lang="en">
     <head>
         <!--
-                  _   _                 _ _
-             /\  | | | |               | (_)
-            /  \ | |_| |_ ___ _ __   __| |_ _______   ___ ___  _ __ ___
-           / /\ \| __| __/ _ \ '_ \ / _` | |_  / _ \ / __/ _ \| '_ ` _ \
-          / ____ \ |_| ||  __/ | | | (_| | |/ /  __/| (_| (_) | | | | | |
-         /_/    \_\__|\__\___|_| |_|\__,_|_/___\___(_)___\___/|_| |_| |_|
-
+        ╔╗──╔╦╗─╔╦═╗─╔╦╗──╔╗─╔╦═══╦╗─╔╗
+        ║╚╗╔╝║║─║║║╚╗║║║──║║─║║╔═╗║║─║║
+        ╚╗╚╝╔╣║─║║╔╗╚╝║║──║║─║║║─╚╣║─║║
+        ─╚╗╔╝║║─║║║╚╗║║║─╔╣║─║║║╔═╣║─║║
+        ──║║─║╚═╝║║─║║║╚═╝║╚═╝║╚╩═║╚═╝║
+        ──╚╝─╚═══╩╝─╚═╩═══╩═══╩═══╩═══╝
         -->
-        <title>{{{$event->title}}} - Attendize.com</title>
+        <title>{{{$event->title}}} - 云麓谷</title>
 
 
         <meta charset="utf-8" />
@@ -27,7 +26,7 @@
         <meta property="og:image" content="{{config('attendize.cdn_url_user_assets').'/'.$event->images->first()['image_path']}}" />
         @endif
         <meta property="og:description" content="{{Str::words(strip_tags(Markdown::parse($event->description))), 20}}" />
-        <meta property="og:site_name" content="Attendize.com" />
+        <meta property="og:site_name" content="yunlugu.org" />
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -69,7 +68,7 @@
         @if (($event->bg_type == 'image' || $event->bg_type == 'custom_image' || Input::get('bg_img_preview')) && !Input::get('bg_color_preview'))
             <style>
                 body {
-                    background: url({{(Input::get('bg_img_preview') ? '/'.Input::get('bg_img_preview') :  asset(config('attendize.cdn_url_static_assets').'/'.$event->bg_image_path))}}) no-repeat center center fixed;
+                    background: url({{(Input::get('bg_img_preview') ? url(Input::get('bg_img_preview')) :  asset(config('attendize.cdn_url_static_assets').'/'.$event->bg_image_path))}}) no-repeat center center fixed;
                     background-size: cover;
                 }
             </style>
