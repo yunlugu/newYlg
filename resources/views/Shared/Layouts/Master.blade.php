@@ -128,7 +128,7 @@
     $(function () {
         $.ajaxSetup({
             headers: {
-                'X-CSRF-Token': "<?php echo csrf_token() ?>"
+                // 'X-CSRF-Token': "<?php echo csrf_token() ?>"
             }
         });
     });

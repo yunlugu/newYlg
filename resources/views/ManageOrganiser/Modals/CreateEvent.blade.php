@@ -129,10 +129,10 @@
                             {!! Form::label('name', trans('ManageOrganiser/Modals/CreateEvent.place'), array('class'=>'control-label required ')) !!}
                             {!!  Form::text('venue_name_full', Input::old('venue_name_full'),
                                         array(
-                                        'class'=>'form-control geocomplete location_field',
+                                        'id'=>'autocomplete',
+                                        'class'=>'form-control location_field',
                                         'placeholder'=>'E.g: The Crab Shack'
                                         ))  !!}
-
                                     <!--These are populated with the Google places info-->
                             <div>
                                 {!! Form::hidden('formatted_address', '', ['class' => 'location_field']) !!}

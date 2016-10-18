@@ -1,5 +1,7 @@
 {!! HTML::script('vendor/simplemde/dist/simplemde.min.js') !!}
 {!! HTML::style('vendor/simplemde/dist/simplemde.min.css') !!}
+{!! HTML::script('plugins/autocomplete/dist/jquery.autocomplete.js') !!}
+
 
 <script>
     $(function() {
@@ -14,6 +16,22 @@
         } catch (e) {
             console.log(e);
         }
+        $('#autocomplete').autocomplete({
+            serviceUrl: 'http://restapi.amap.com/v3/assistant/inputtips?key=02d2735755ffafa30dd2e2ea125b5ed7',
+            paramName: 'keywords',
+            transformResult: function(response) {
+                var data = JSON.parse(response);
+                return {
+                    suggestions: $.map(data.tips, function(dataItem) {
+                        console.log(dataItem.name);
+                        return { value: dataItem.name, data: dataItem.id.toString() };
+                    })
+                };
+            },
+            onSelect: function (suggestion) {
+                alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+            }
+        });
 
         $('.editable').each(function() {
             var simplemde = new SimpleMDE({
