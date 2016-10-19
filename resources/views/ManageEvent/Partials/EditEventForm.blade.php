@@ -94,26 +94,20 @@
             {!! Form::label('name', '培训地点', array('class'=>'control-label required ')) !!}
             {!!  Form::text('venue_name_full', Input::old('venue_name_full'),
                                         array(
-                                        'class'=>'form-control geocomplete location_field',
+                                        'id'=>'autocomplete',
+                                        'class'=>'form-control location_field',
                                         'placeholder'=>'E.g: 立言厅'
                                         ))  !!}
 
             <!--These are populated with the Google places info-->
             <div>
-               {!! Form::hidden('formatted_address', $event->location_address, ['class' => 'location_field']) !!}
-               {!! Form::hidden('street_number', $event->location_street_number, ['class' => 'location_field']) !!}
-               {!! Form::hidden('country', $event->location_country, ['class' => 'location_field']) !!}
-               {!! Form::hidden('country_short', $event->location_country_short, ['class' => 'location_field']) !!}
-               {!! Form::hidden('place_id', $event->location_google_place_id, ['class' => 'location_field']) !!}
-               {!! Form::hidden('name', $event->venue_name, ['class' => 'location_field']) !!}
-               {!! Form::hidden('location', '', ['class' => 'location_field']) !!}
-               {!! Form::hidden('postal_code', $event->location_post_code, ['class' => 'location_field']) !!}
-               {!! Form::hidden('route', $event->location_address_line_1, ['class' => 'location_field']) !!}
-               {!! Form::hidden('lat', $event->location_lat, ['class' => 'location_field']) !!}
-               {!! Form::hidden('lng', $event->location_long, ['class' => 'location_field']) !!}
-               {!! Form::hidden('administrative_area_level_1', $event->location_state, ['class' => 'location_field']) !!}
-               {!! Form::hidden('sublocality', '', ['class' => 'location_field']) !!}
-               {!! Form::hidden('locality', $event->location_address_line_1, ['class' => 'location_field']) !!}
+                {!! Form::hidden('location_id', $event->locatoin_id, ['class' => 'location_field', 'id'=>'location_id']) !!}
+                {!! Form::hidden('location_name', $event->location_address, ['class' => 'location_field', 'id'=>'location_name']) !!}
+                {!! Form::hidden('location_district', $event->location_district, ['class' => 'location_field', 'id'=>'location_district']) !!}
+                {!! Form::hidden('location_adcode', $event->location_adcode, ['class' => 'location_field', 'id'=>'location_adcode']) !!}
+                {!! Form::hidden('location_coordinate', $event->location_coordinate, ['class' => 'location_field', 'id'=>'location_coordinate']) !!}
+                {!! Form::hidden('location_address', $event->location_address, ['class' => 'location_field', 'id'=>'location_address']) !!}
+                {!! Form::hidden('location_typecode', $event->location_typecode, ['class' => 'location_field', 'id'=>'location_typecode']) !!}
             </div>
             <!-- /These are populated with the Google places info-->
 

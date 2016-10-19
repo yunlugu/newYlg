@@ -39,20 +39,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <!-- <div class="col-sm-3">
-                                <div class="form-group">
-                                    {!! Form::label('title', '小组', array('class'=>'control-label required')) !!}
-                                    这里准备改ajax
-                                    {!!Form::select('department', [
-                                        '1' => '技术部',
-                                        '2' => '行政部',
-                                        '3' => '运营部',
-                                        '4' => '宣传部',
-                                        '5' => '外媒部'
-
-                                        ], null, ['class' => 'form-control'])!!}
-                                </div>
-                            </div> -->
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
@@ -135,20 +121,13 @@
                                         ))  !!}
                                     <!--These are populated with the Google places info-->
                             <div>
-                                {!! Form::hidden('formatted_address', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('street_number', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('country', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('country_short', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('place_id', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('name', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('location', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('postal_code', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('route', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('lat', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('lng', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('administrative_area_level_1', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('sublocality', '', ['class' => 'location_field']) !!}
-                                {!! Form::hidden('locality', '', ['class' => 'location_field']) !!}
+                                {!! Form::hidden('location_id', '', ['class' => 'location_field', 'id'=>'location_id']) !!}
+                                {!! Form::hidden('location_name', '', ['class' => 'location_field', 'id'=>'location_name']) !!}
+                                {!! Form::hidden('location_district', '', ['class' => 'location_field', 'id'=>'location_district']) !!}
+                                {!! Form::hidden('location_adcode', '', ['class' => 'location_field', 'id'=>'location_adcode']) !!}
+                                {!! Form::hidden('location_coordinate', '', ['class' => 'location_field', 'id'=>'location_coordinate']) !!}
+                                {!! Form::hidden('location_address', '', ['class' => 'location_field', 'id'=>'location_address']) !!}
+                                {!! Form::hidden('location_typecode', '', ['class' => 'location_field', 'id'=>'location_typecode']) !!}
                             </div>
                             <!-- /These are populated with the Google places info-->
                         </div>

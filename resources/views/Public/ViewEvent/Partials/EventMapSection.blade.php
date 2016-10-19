@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="google-maps content">
-                <iframe frameborder="0" style="border:0;" src="http://apis.map.qq.com/tools/poimarker?type=1&keyword=酒店&center=39.908491,116.374328&radius=1000&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp"></iframe>
+                <iframe frameborder="0" style="border:0;" src="http://m.amap.com/navi/?dest={{$event->location_coordinate}}&destName={{$event->location_name}}&hideRouteIcon=1&key=02d2735755ffafa30dd2e2ea125b5ed7"></iframe>
             </div>
         </div>
     </div>

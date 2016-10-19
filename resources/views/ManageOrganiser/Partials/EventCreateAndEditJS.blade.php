@@ -24,12 +24,27 @@
                 return {
                     suggestions: $.map(data.tips, function(dataItem) {
                         console.log(dataItem.name);
-                        return { value: dataItem.name, data: dataItem.id.toString() };
+                        return {
+                            value: dataItem.name,
+                            data: dataItem.id.toString(),
+                            district: dataItem.district.toString(),
+                            adcode: dataItem.adcode.toString(),
+                            location: dataItem.location.toString(),
+                            address: dataItem.address.toString(),
+                         };
                     })
                 };
             },
             onSelect: function (suggestion) {
-                alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+                // $('#autocomplete').val(suggestion.data);
+                $('#location_id').val(suggestion.data);
+                $('#location_name').val(suggestion.value);
+                $('#location_district').val(suggestion.district);
+                $('#location_adcode').val(suggestion.adcode);
+                $('#location_address').val(suggestion.address);
+                $('#location_coordinate').val(suggestion.location);
+                // $('#location_typecode').val(suggestion.data);
+
             }
         });
 
