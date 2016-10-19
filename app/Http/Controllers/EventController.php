@@ -259,7 +259,10 @@ class EventController extends MyBaseController
                 $event->location_is_manual = 0;
             } else { /* Manually entered */
                 $event->venue_name = $request->get('location_venue_name');
+                $event->venue_name_full = $request->get('location_venue_name');
+                $event->location_name = $request->get('location_venue_name');
                 $event->location_address_line_1 = $request->get('location_address_line_1');
+                // $event->location_district = '湖南省长沙市岳麓区中南大学';
                 // $event->location_address_line_2 = $request->get('location_address_line_2');
                 // $event->location_state = $request->get('location_state');
                 // $event->location_post_code = $request->get('location_post_code');

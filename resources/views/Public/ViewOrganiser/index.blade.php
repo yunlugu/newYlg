@@ -82,7 +82,7 @@
                 <div class="post-excerpt">
                     <!-- Post Date and Categories -->
                     <div class="date-and-category">
-                        <div class="date">{{$event->start_date->format('Y-m-d h:i')}}</div>
+                        <div class="date">{{$event->start_date->format('Y-m-d H:i')}}</div>
                         <div class="speaker">
                             <a href="#">{{$event->speaker}}</a>
                         </div>
@@ -92,7 +92,7 @@
                     </div>
                     <!-- Post Excerpt -->
                     <div class="excerpt typo">{{$event->description}}
-                        <div class="alert alert-info"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{$event->venue_name}}</div>
+                        <div class="alert alert-info"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>@if($event->location_is_manual){{$event->venue_name}}@else{{$event->location_name}}@endif</div>
                     </div>
                     <!-- Post Tags -->
                     <div class="tags">
