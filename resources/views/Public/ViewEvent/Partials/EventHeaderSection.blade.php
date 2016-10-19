@@ -36,8 +36,13 @@
                 </span>
                 @
                 <span property="location" typeof="Place">
+                    @if($event->venue_name == '')
+                    <b property="name">{{$event->location_name}}</b>
+                    <meta property="address" content="{{ urldecode($event->location_name) }}">
+                    @else
                     <b property="name">{{$event->venue_name}}</b>
                     <meta property="address" content="{{ urldecode($event->venue_name) }}">
+                    @endif
                 </span>
             </div>
 
