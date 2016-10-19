@@ -34,6 +34,8 @@
         @yield('head')
 
        {!!HTML::style(config('attendize.cdn_url_static_assets').'/assets/stylesheet/frontend.css')!!}
+       <link rel="stylesheet" href="{{url('plugins/cnrrssb/css/font-awesome.min.css?ver=4.4.0')}}" />
+       <link rel="stylesheet" href="{{url('plugins/cnrrssb/css/cnrrssb.css')}}" />
 
         <!--Bootstrap placeholder fix-->
         <style>
@@ -96,7 +98,8 @@
             <span style="font-size:11px;">TOP</span></a>
 
         {!!HTML::script(config('attendize.cdn_url_static_assets').'/assets/javascript/frontend.js')!!}
-
+        <script src="{{url('plugins/cnrrssb/js/cnrrssb.js')}}"></script>
+        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1" charset="utf-8"></script>
 
         @if(isset($secondsToExpire))
         <script>if($('#countdown')) {setCountdown($('#countdown'), {{$secondsToExpire}});}</script>
