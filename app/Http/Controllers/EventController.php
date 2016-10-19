@@ -208,7 +208,7 @@ class EventController extends MyBaseController
         return response()->json([
             'status'      => 'success',
             'id'          => $event->id,
-            'redirectUrl' => route('showEventTickets', [
+            'redirectUrl' => route('showEventDashboard', [
                 'event_id'  => $event->id,
                 'first_run' => 'yup',
             ]),

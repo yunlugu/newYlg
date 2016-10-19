@@ -372,7 +372,7 @@ Route::group(['middleware' => ['auth', 'first.run']], function () {
                 $event->is_live = 1;
                 $event->save();
                 \Session::flash('message',
-                    'Event Successfully Made Live! You can undo this action in event settings page.');
+                    '培训已开放！可以在培训设置里取消开放');
 
                 return Redirect::route('showEventDashboard', [
                     'event_id' => $event_id,

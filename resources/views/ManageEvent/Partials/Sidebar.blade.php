@@ -56,17 +56,17 @@
                     <span class="text">{{trans('ManageEvent/Partials/Sidebar.check_in')}}</span>
                 </a>
             </li>
-            <li class="{{ Request::is('*surveys*') ? 'active' : '' }}">
+            <!-- <li class="{{ Request::is('*surveys*') ? 'active' : '' }}">
                 <a href="{{route('showEventSurveys', array('event_id' => $event->id))}}">
                     <span class="figure"><i class="ico-question"></i></span>
                     <span class="text">{{trans('ManageEvent/Partials/Sidebar.surveys')}}</span>
                 </a>
-            </li>
-            <li class="{{ Request::is('*widgets*') ? 'active' : '' }}">
+            </li> -->
+            <!-- <li class="{{ Request::is('*widgets*') ? 'active' : '' }}">
                 <a href="{{route('showEventWidgets', array('event_id' => $event->id))}}">
                     <span class="figure"><i class="ico-code"></i></span>
                     <span class="text">{{trans('ManageEvent/Partials/Sidebar.widgets')}}</span>
                 </a>
-            </li>
+            </li> -->
     </section>
 </aside>

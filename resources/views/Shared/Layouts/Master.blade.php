@@ -28,6 +28,8 @@
     <!--Style-->
     {!! HTML::style(config('attendize.cdn_url_static_assets').'/assets/stylesheet/application.css') !!}
     <!--/Style-->
+    <link rel="stylesheet" href="{{url('plugins/cnrrssb/css/font-awesome.min.css?ver=4.4.0')}}" />
+    <link rel="stylesheet" href="{{url('plugins/cnrrssb/css/cnrrssb.css')}}" />
 
     @yield('head')
 </head>
@@ -124,6 +126,8 @@
 
 <!--JS-->
 {!! HTML::script('assets/javascript/backend.js') !!}
+<script src="{{url('plugins/cnrrssb/js/cnrrssb.js')}}"></script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1" charset="utf-8"></script>
 <script>
     $(function () {
         $.ajaxSetup({
