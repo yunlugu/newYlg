@@ -1,7 +1,7 @@
 @extends('Shared.Layouts.MasterWithoutMenus')
 
 @section('title')
-    Create Organiser
+    创建组织者
 @stop
 
 @section('head')
@@ -20,21 +20,21 @@
             <div class="panel">
                 <div class="panel-body">
                     <div class="logo">
-                        {!!HTML::image('assets/images/logo-dark.png')!!}
+                        {!!HTML::image('assets/images/logo.png')!!}
                     </div>
-                    <h2>Create Organiser</h2>
+                    <h2>创建组织者</h2>
 
                     {!! Form::open(array('url' => route('postCreateOrganiser'), 'class' => 'ajax')) !!}
                     @if(@$_GET['first_run'] == '1')
                         <div class="alert alert-info">
-                            Before you create events you'll need to create an organiser. An organiser is simply whoever is organising the event. It can be anyone, from a person to an organisation.
+                            请先创建组织者，才能创建活动
                         </div>
                     @endif
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('name', 'Organiser Name', array('class'=>'required control-label ')) !!}
+                                {!! Form::label('name', '姓名', array('class'=>'required control-label ')) !!}
                                 {!!  Form::text('name', Input::old('name'),
                                             array(
                                             'class'=>'form-control'
@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('email', 'Organiser Email', array('class'=>'control-label required')) !!}
+                                {!! Form::label('email', 'Email', array('class'=>'control-label required')) !!}
                                 {!!  Form::text('email', Input::old('email'),
                                             array(
                                             'class'=>'form-control ',
@@ -57,7 +57,7 @@
 
 
                     <div class="form-group">
-                        {!! Form::label('about', 'Organiser Description', array('class'=>'control-label ')) !!}
+                        {!! Form::label('about', '描述', array('class'=>'control-label ')) !!}
                         {!!  Form::textarea('about', Input::old('about'),
                                     array(
                                     'class'=>'form-control ',
@@ -68,7 +68,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('facebook', 'Organiser Facebook', array('class'=>'control-label ')) !!}
+                                {!! Form::label('facebook', 'Facebook', array('class'=>'control-label ')) !!}
 
                                 <div class="input-group">
                                     <span style="background-color: #eee;" class="input-group-addon">facebook.com/</span>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('twitter', 'Organiser Twitter', array('class'=>'control-label ')) !!}
+                                {!! Form::label('twitter', 'Twitter', array('class'=>'control-label ')) !!}
 
                                 <div class="input-group">
                                     <span style="background-color: #eee;" class="input-group-addon">twitter.com/</span>
@@ -97,15 +97,14 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('organiser_logo', 'Organiser Logo', array('class'=>'control-label ')) !!}
+                        {!! Form::label('organiser_logo', 'Logo', array('class'=>'control-label ')) !!}
                         {!! Form::styledFile('organiser_logo') !!}
                     </div>
 
-                    {!! Form::submit('Create Organiser', ['class'=>" btn-block btn btn-success"]) !!}
+                    {!! Form::submit('创建', ['class'=>" btn-block btn btn-success"]) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
     </div>
 @stop
-
