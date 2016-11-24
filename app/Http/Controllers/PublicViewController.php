@@ -29,6 +29,10 @@ class PublicViewController extends Controller
         return view('Public.MainPage');
     }
 
+    public function showHomePage(Request $request) {
+        return view('Public.HomePage');
+    }
+
     public function showDanmakuPage(Request $request) {
         JavaScript::put([
             'logo_path' => url('assets/images/logo2.png'),

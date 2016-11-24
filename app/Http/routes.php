@@ -778,6 +778,10 @@ Route::get('/', [
     'as'   => 'showMainPage',
     'uses' => 'PublicViewController@showMainPage',
 ]);
+Route::get('home', [
+    'as'   => 'showHomePage',
+    'uses' => 'PublicViewController@showHomePage',
+]);
 Route::get('danmaku', [
     'as'   => 'showDanmakuPage',
     'uses' => 'PublicViewController@showDanmakuPage',
